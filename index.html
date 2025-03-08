@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizMaster</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Landing Page -->
+        <div id="landing-page" class="page active">
+            <div class="hero-section">
+                <h1>QuizMaster</h1>
+                <p>Test your knowledge with our interactive quizzes!</p>
+            </div>
+
+            <div class="settings-card">
+                <h2>Quiz Settings</h2>
+
+                <div class="setting-group">
+                    <label for="category">Category:</label>
+                    <select id="category" class="setting-input">
+                        <option value="">Any Category</option>
+                        <!-- Categories will be loaded from API -->
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label for="difficulty">Difficulty:</label>
+                    <div class="difficulty-selector">
+                        <button class="difficulty-btn active" data-difficulty="">Any</button>
+                        <button class="difficulty-btn" data-difficulty="easy">Easy</button>
+                        <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+                        <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label for="amount">Number of Questions:</label>
+                    <div class="range-container">
+                        <input type="range" id="amount" min="5" max="20" value="10" class="setting-input">
+                        <span id="amount-value">10</span>
+                    </div>
+                </div>
+
+                <button id="start-btn" class="primary-btn">Start Quiz</button>
+            </div>
+        </div>
+
+        <!-- Quiz Page -->
+        <div id="quiz-page" class="page">
+            <div class="quiz-header">
+                <div class="progress-container">
+                    <div class="progress-text">Question <span id="current-question">1</span>/<span
+                            id="total-questions">10</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="timer-container">
+                    <div class="timer-icon"><i class="fas fa-clock"></i></div>
+                    <div class="timer-bar">
+                        <div class="timer-fill"></div>
+                    </div>
+                    <div class="timer-text">30</div>
+                </div>
+
+                <div class="score-container">
+                    <div class="score-icon"><i class="fas fa-star"></i></div>
+                    <div class="score-text">0</div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">Loading question...</div>
+
+                <div class="options-container">
+                    <!-- Options will be loaded dynamically -->
+                </div>
+            </div>
+
+            <button id="next-btn" class="primary-btn">Next Question</button>
+        </div>
+
+        <!-- Results Page -->
+        <div id="results-page" class="page">
+            <div class="results-card">
+                <h2>Quiz Results</h2>
+
+                <div class="score-circle">
+                    <div class="score-value">0</div>
+                    <div class="score-label">points</div>
+                </div>
+
+                <div class="results-stats">
+                    <div class="stat-item">
+                        <div class="stat-label">Correct Answers:</div>
+                        <div class="stat-value correct-answers">0/10</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Time Bonus:</div>
+                        <div class="stat-value time-bonus">0</div>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button id="review-btn" class="secondary-btn">Review Answers</button>
+                    <button id="restart-btn" class="primary-btn">Play Again</button>
+                </div>
+
+                <div class="share-container">
+                    <div class="share-label">Share your results:</div>
+                    <div class="share-buttons">
+                        <button class="share-btn twitter"><i class="fab fa-twitter"></i></button>
+                        <button class="share-btn facebook"><i class="fab fa-facebook-f"></i></button>
+                        <button class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="answers-review hidden">
+                <h3>Question Review</h3>
+                <div class="review-list">
+                    <!-- Review items will be added dynamically -->
+                </div>
+                <button id="close-review-btn" class="secondary-btn">Close Review</button>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loading-overlay">
+            <div class="loader"></div>
+            <div class="loading-text">Loading quiz...</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
